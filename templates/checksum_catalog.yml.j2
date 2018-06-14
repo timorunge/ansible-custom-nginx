@@ -1,0 +1,12 @@
+# {{ ansible_managed }}
+
+custom_nginx_all_directories: {{ custom_nginx_all_directories | hash('sha1') }}
+custom_nginx_build_options: {{ custom_nginx_build_options | hash('sha1') }}
+custom_nginx_conf_path: {{ custom_nginx_conf_path | hash('sha1') }}
+custom_nginx_download_url: {{ custom_nginx_download_url | hash('sha1') }}
+custom_nginx_lock_path: {{ custom_nginx_lock_path | hash('sha1') }}
+custom_nginx_patches: {{ custom_nginx_patches | hash('sha1') }}
+custom_nginx_pid_path: {{ custom_nginx_pid_path | hash('sha1') }}
+custom_nginx_sbin_path: {{ custom_nginx_sbin_path | hash('sha1') }}
+custom_nginx_tarball_url: {{ custom_nginx_tarball_url | hash('sha1') }}
+custom_nginx_version: {{ custom_nginx_version | hash('sha1') }}

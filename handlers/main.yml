@@ -1,0 +1,13 @@
+---
+
+- name: systemctl daemon-reload
+  systemd:
+    daemon_reload: yes
+  when: ansible_service_mgr == "systemd"
+
+- name: restart nginx
+  service:
+    enabled: "{{ custom_nginx_service_enabled | default(yes) }}"
+    name: nginx
+    state: restarted
+    use: service

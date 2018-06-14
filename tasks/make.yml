@@ -1,0 +1,16 @@
+---
+
+- name: Compile custom nginx
+  make:
+    chdir: "{{ custom_nginx_install_dir }}/build/nginx-{{ custom_nginx_version }}"
+  when: custom_nginx_build.changed
+  register: custom_nginx_compile
+
+- name: Install custom nginx
+  make:
+    chdir: "{{ custom_nginx_install_dir }}/build/nginx-{{ custom_nginx_version }}"
+    target: install
+  when: custom_nginx_compile.changed
+  notify:
+     - restart nginx
+     - systemctl daemon-reload

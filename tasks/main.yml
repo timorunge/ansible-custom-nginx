@@ -1,0 +1,33 @@
+---
+
+- include_tasks: facts.yml
+
+- include_tasks: dependencies.yml
+
+- name: Create temporary checksum catalog
+  template:
+    dest: "{{ custom_nginx_install_dir }}/tmp/ansible_checksum_catalog.yml"
+    mode: 0600
+    src: checksum_catalog.yml.j2
+
+- name: Check for changes in checksum catalog
+  ignore_errors: yes
+  command: "diff {{ custom_nginx_install_dir }}/ansible_checksum_catalog.yml {{ custom_nginx_install_dir }}/tmp/ansible_checksum_catalog.yml"
+  register: custom_nginx_checksum_catalog
+  changed_when: custom_nginx_checksum_catalog.rc != 0
+
+- include_tasks: prepare.yml
+
+- include_tasks: patch.yml
+
+- include_tasks: build.yml
+
+- include_tasks: make.yml
+
+- include_tasks: config.yml
+
+- name: Save checksum catalog
+  copy:
+    dest: "{{ custom_nginx_install_dir }}/ansible_checksum_catalog.yml"
+    remote_src: yes
+    src: "{{ custom_nginx_install_dir }}/tmp/ansible_checksum_catalog.yml"

@@ -1,0 +1,27 @@
+---
+
+- name: Install nginx build dependencies
+  package:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items: "{{ custom_nginx_dependency_pkgs | default(omit) }}"
+
+- name: Create required directories
+  file:
+    mode: 0755
+    path: "{{ item }}"
+    state: directory
+  with_items: "{{ custom_nginx_all_directories }}"
+
+- name: Create nginx group
+  group:
+    name: "{{ custom_nginx_group }}"
+    state: present
+
+- name: Create nginx user
+  user:
+    create_home: no
+    groups: "{{ custom_nginx_group }}"
+    name: "{{ custom_nginx_user }}"
+    shell: /bin/false

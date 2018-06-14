@@ -1,0 +1,9 @@
+---
+
+- name: Patch nginx source
+  patch:
+    dest: "{{ custom_nginx_install_dir }}/build/nginx-{{ custom_nginx_version }}/{{ item.value.dest_file }}"
+    src: "{{ item.value.patch_file }}"
+    state: "{{ item.value.state | default(present) }}"
+  with_dict: "{{ custom_nginx_patches | default(omit) }}"
+  register: custom_nginx_patches

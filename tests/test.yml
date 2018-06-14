@@ -1,0 +1,53 @@
+---
+
+- hosts: localhost
+  remote_user: root
+  gather_facts: true
+
+  vars:
+    custom_nginx_version: 1.15.0
+    custom_nginx_conf_path: /etc/nginx/nginx.conf
+    custom_nginx_prefix_directory: /etc/nginx
+    custom_nginx_sbin_path: /usr/local/nginx/sbin/nginx
+    custom_nginx_patches:
+      disable_h2c_table_update:
+        dest_file: src/http/v2/ngx_http_v2.c
+        patch_file: disable_h2c_table_update.patch
+        state: present
+    custom_nginx_build_options:
+      - "--prefix={{ custom_nginx_prefix_directory }}"
+      - "--sbin-path={{ custom_nginx_sbin_path }}"
+      - "--modules-path={{ custom_nginx_modules_directory }}"
+      - "--conf-path={{ custom_nginx_conf_path }}"
+      - "--pid-path={{ custom_nginx_pid_path }}"
+      - "--lock-path={{ custom_nginx_lock_path }}"
+      - "--error-log-path={{ custom_nginx_log_directory }}/error.log"
+      - "--http-log-path={{ custom_nginx_log_directory }}/access.log"
+      - "--http-client-body-temp-path={{ custom_nginx_cache_directory }}/client_temp"
+      - "--http-proxy-temp-path={{ custom_nginx_cache_directory }}/proxy_temp"
+      - "--http-fastcgi-temp-path={{ custom_nginx_cache_directory }}/fastcgi_temp"
+      - "--http-uwsgi-temp-path={{ custom_nginx_cache_directory }}/uwsgi_temp"
+      - "--http-scgi-temp-path={{ custom_nginx_cache_directory }}/scgi_temp"
+      - "--user={{ custom_nginx_user }}"
+      - "--group={{ custom_nginx_group }}"
+      - '--with-compat'
+      - '--with-file-aio'
+      - '--with-threads'
+      - '--with-http_addition_module'
+      - '--with-http_auth_request_module'
+      - '--with-http_dav_module'
+      - '--with-http_flv_module'
+      - '--with-http_gunzip_module'
+      - '--with-http_gzip_static_module'
+      - '--with-http_mp4_module'
+      - '--with-http_random_index_module'
+      - '--with-http_realip_module'
+      - '--with-http_secure_link_module'
+      - '--with-http_slice_module'
+      - '--with-http_ssl_module'
+      - '--with-http_stub_status_module'
+      - '--with-http_sub_module'
+      - '--with-http_v2_module'
+
+  roles:
+    - timorunge.custom-nginx

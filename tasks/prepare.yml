@@ -1,0 +1,17 @@
+---
+
+- name: Downloading nginx source (tarball)
+  get_url:
+    dest: "{{ custom_nginx_install_dir }}/download/nginx-{{ custom_nginx_version }}.tar.gz"
+    url: "{{ custom_nginx_tarball_url }}"
+  register: custom_nginx_source_download
+
+- name: Unpacking nginx source
+  unarchive:
+    copy: no
+    dest: "{{ custom_nginx_install_dir }}/build"
+    src: "{{ custom_nginx_source_download.dest }}"
+    extra_opts:
+      - '--overwrite'
+  when: custom_nginx_source_download.changed
+  register: custom_nginx_source_files

@@ -1,0 +1,25 @@
+---
+
+- name: Copy basic nginx configuration (not overwriting existing files)
+  command: "rsync -togq --ignore-existing --exclude=*.default {{ custom_nginx_install_dir }}/build/nginx-{{ custom_nginx_version }}/conf/ {{ custom_nginx_prefix_directory }}"
+  register: custom_nginx_copy_basic_config
+  changed_when: custom_nginx_copy_basic_config.rc != 0
+
+- name: Create nginx systemd configuration
+  template:
+    dest: /lib/systemd/system/nginx.service
+    mode: 0644
+    src: "{{ custom_nginx_service_template }}"
+  when: ansible_service_mgr == "systemd"
+  notify:
+     - restart nginx
+     - systemctl daemon-reload
+
+- name: Create nginx init script
+  template:
+    dest: /etc/init.d/nginx
+    mode: 0755
+    src: "{{ custom_nginx_init_template }}"
+  notify:
+     - restart nginx
+     - systemctl daemon-reload
