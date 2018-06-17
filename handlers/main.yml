@@ -9,5 +9,4 @@
   service:
     enabled: "{{ custom_nginx_service_enabled | default(yes) }}"
     name: nginx
-    state: restarted
-    use: service
+    state: "{{ custom_nginx_service_state | default('restarted') }}"

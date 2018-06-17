@@ -1,36 +1,27 @@
 ---
 
-language: python
-python: 2.7
-
 sudo: true
 
-addons:
-  apt:
-    packages:
-      - python-apt
-      - python-pip
+env:
+  - DOCKER_COMPOSE_VERSION=1.21.2
+
+services:
+  - docker
 
 install:
-  - pip install pip --upgrade
-  - pip install ansible==2.6.0rc2
-  - pip install ansible-lint splitter coverage junit-xml
-  - ansible --version
-  - ansible-galaxy install timorunge.custom-nginx --roles-path=./
-  - printf '[defaults]\nroles_path=../' > ansible.cfg
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+  - docker-compose --version
 
 script:
-  - ansible-lint tasks/main.yml
-  - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
-  - ansible-playbook tests/test.yml -i tests/inventory --connection=local --become -vvvv
-  - >
-    ansible-playbook tests/test.yml -i tests/inventory --connection=local --become -vvvv |
-    grep -q 'changed=0.*failed=0' && (echo 'Idempotence test: pass' && exit 0) ||
-    (echo 'Idempotence test: fail' && exit 1)
-  - >
-    test `echo $(/usr/local/nginx/sbin/nginx -v 2>&1) | awk -F '/' '{print $2}'` ==
-    `awk '/custom_nginx_version/{print $2}' tests/test.yml`
-  - curl -I http://localhost:80
+  - docker-compose config
+  - docker-compose pull
+  - docker-compose build
+  - docker-compose up --no-start
+  - docker-compose up
+  - docker-compose down
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

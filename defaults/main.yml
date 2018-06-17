@@ -18,18 +18,9 @@ custom_nginx_download_url: http://nginx.org/download
 # Final download url for the nginx tarball:
 custom_nginx_tarball_url: "{{ custom_nginx_download_url }}/nginx-{{ custom_nginx_version }}.tar.gz"
 
-# List of dependency packages (mainly for building and patching the source):
-custom_nginx_dependency_pkgs:
-  - build-essential
-  - diffutils
-  - gcc
-  - libghc-regex-pcre-dev
-  - libpcre3-dev
-  - libssl-dev
-  - make
-  - patch
-  - unzip
-  - zlib1g-dev
+# List of dependency packages (mainly for building and patching the source)
+# Defaults are included via "vars/{{ ansible_os_family }}.yml"
+custom_nginx_dependency_pkgs: []
 
 # The place where to unpack, configure, build and install nginx:
 custom_nginx_install_dir: /usr/local/src/nginx
@@ -55,10 +46,10 @@ custom_nginx_additional_directories: []
 # Templates
 
 # Gives the possibility to override the nginx systemd template
-custom_nginx_service_template: nginx.service.j2
+custom_nginx_service_template: nginx.service-{{ ansible_os_family }}.j2
 
 # Gives the possibility to override the nginx init script
-custom_nginx_init_template: nginx.init.j2
+custom_nginx_init_template: nginx.init-{{ ansible_os_family }}.j2
 
 # Patches
 

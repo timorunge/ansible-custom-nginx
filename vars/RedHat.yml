@@ -1,0 +1,10 @@
+---
+
+custom_nginx_dependency_pkgs:
+  - "@Development Tools"
+  - gd-devel
+  - initscripts
+  - libxml2-devel
+  - libxslt-devel
+  - openssl-devel
+  - pcre-devel

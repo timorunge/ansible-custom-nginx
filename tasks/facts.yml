@@ -15,3 +15,8 @@
 - name: Generate complete directory list
   set_fact:
     custom_nginx_all_directories: "{{ custom_nginx_single_directories }} + {{ custom_nginx_additional_directories | default(omit) }}"
+
+- name: Set nginx service status
+  set_fact:
+    custom_nginx_service_state: stopped
+  when: not custom_nginx_service_enabled

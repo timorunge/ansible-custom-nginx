@@ -1,0 +1,19 @@
+# {{ ansible_managed }}
+# Service enabled: {{ custom_nginx_service_enabled | default(yes) }}
+
+[Unit]
+Description=nginx - high performance web server
+Documentation=http://nginx.org/en/docs/
+After=syslog.target network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=forking
+PIDFile={{ custom_nginx_pid_path }}
+ExecStartPre={{ custom_nginx_sbin_path }} -t
+ExecStart={{ custom_nginx_sbin_path }} -c {{ custom_nginx_conf_path }}
+ExecReload={{ custom_nginx_sbin_path }} -s reload
+ExecStop=/bin/kill -s QUIT $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

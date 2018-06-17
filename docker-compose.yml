@@ -1,0 +1,69 @@
+---
+
+version: '2'
+services:
+  centos_7:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile_CentOS_7
+      args:
+        ANSIBLE_VERSION: 2.6.0rc2
+        ROLE_NAME: timorunge.custom-nginx
+        WORKDIR: /ansible
+  debian_8.10:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile_Debian_8.10
+      args:
+        ANSIBLE_VERSION: 2.6.0rc2
+        ROLE_NAME: timorunge.custom-nginx
+        WORKDIR: /ansible
+  debian_9.4:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile_Debian_9.4
+      args:
+        ANSIBLE_VERSION: 2.6.0rc2
+        ROLE_NAME: timorunge.custom-nginx
+        WORKDIR: /ansible
+  ubuntu_14.04:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile_Ubuntu_14.04
+      args:
+        ANSIBLE_VERSION: 2.6.0rc2
+        ROLE_NAME: timorunge.custom-nginx
+        PYTHON_VERSION: 2.7.15
+        WORKDIR: /ansible
+  ubuntu_16.04:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile_Ubuntu_16.04
+      args:
+        ANSIBLE_VERSION: 2.6.0rc2
+        ROLE_NAME: timorunge.custom-nginx
+        WORKDIR: /ansible
+  ubuntu_17.10:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile_Ubuntu_17.10
+      args:
+        ANSIBLE_VERSION: 2.6.0rc2
+        ROLE_NAME: timorunge.custom-nginx
+        WORKDIR: /ansible
+  ubuntu_18.04:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile_Ubuntu_18.04
+      args:
+        ANSIBLE_VERSION: 2.6.0rc2
+        ROLE_NAME: timorunge.custom-nginx
+        WORKDIR: /ansible
+  ubuntu_18.10:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile_Ubuntu_18.10
+      args:
+        ANSIBLE_VERSION: 2.6.0rc2
+        ROLE_NAME: timorunge.custom-nginx
+        WORKDIR: /ansible

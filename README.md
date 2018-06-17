@@ -5,6 +5,19 @@ This role is building and installing nginx directly out of the source code.
 
 It's providing an easy way to patch the nginx sources according to your needs.
 
+Tested platforms are:
+* Debian
+  * 8.10
+  * 9.4
+* EL
+  * 7
+* Ubuntu
+  * 14.04
+  * 16.04
+  * 17.10
+  * 18.04
+  * 18.10
+
 The role is not made for the configuration of the nginx service itself. There
 are already powerful roles out there. If you're looking for one I'd highly
 recommend [jdauphant.nginx](https://github.com/jdauphant/ansible-role-nginx).
@@ -12,7 +25,8 @@ recommend [jdauphant.nginx](https://github.com/jdauphant/ansible-role-nginx).
 Requirements
 ------------
 
-This role requires Ansible 2.6.0 or higher in order to apply patches.
+This role requires [Ansible 2.6.0](https://docs.ansible.com/ansible/devel/roadmap/ROADMAP_2_6.html)
+or higher in order to apply patches.
 
 You can simply use pip to install the current release candidate:
 
@@ -359,6 +373,37 @@ An overview of the build options for nginx (1.14.0).
 --with-openssl-opt=OPTIONS         set additional build options for OpenSSL
 
 --with-debug                       enable debug logging
+```
+
+Testing
+-------
+
+Testing is done with [Docker Compose](https://docs.docker.com/compose/) which is
+bringing up the following containers:
+
+* CentOS 7
+* Debian 8.10
+* Debian 9.4
+* Ubuntu 14.04
+* Ubuntu 16.04
+* Ubuntu 17.10
+* Ubuntu 18.04
+* Ubuntu 18.10
+
+Ansible 2.6.0rc2 is installed on all containers and is applying a
+[test playbook](tests/test.yml) locally.
+
+For further details and additional checks take a look at the
+[Docker entrypoint](docker/docker-entrypoint.sh).
+
+```sh
+# Testing locally with docker-compose:
+docker-compose config
+docker-compose pull
+docker-compose build
+docker-compose up --no-start
+docker-compose up
+docker-compose down
 ```
 
 Dependencies
