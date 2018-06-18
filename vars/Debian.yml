@@ -2,7 +2,6 @@
 
 custom_nginx_dependency_pkgs:
   - build-essential
-  - diffutils
   - gcc
   - gawk
   - gzip

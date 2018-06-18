@@ -26,7 +26,7 @@ Requirements
 ------------
 
 This role requires [Ansible 2.6.0](https://docs.ansible.com/ansible/devel/roadmap/ROADMAP_2_6.html)
-or higher in order to apply patches.
+or higher in order to apply [patches](#2-apply-patches-to-the-source).
 
 You can simply use pip to install the current release candidate:
 
@@ -197,6 +197,109 @@ custom_nginx_patches:
       - ...
   roles:
     - timorunge.custom-nginx
+```
+
+## 4) nginx configuration with jdauphant.nginx
+
+Like mentioned in the beginning, this role is not build for the configuration
+of nginx itself.
+
+Here you have some example in order to get everything up and running together
+with [jdauphant.nginx](https://github.com/jdauphant/ansible-role-nginx).
+
+```yaml
+- hosts: nginx
+  vars:
+    custom_nginx_version: 1.15.0
+    custom_nginx_user: nginx
+    custom_nginx_conf_path: /etc/nginx/nginx.conf
+    custom_nginx_pid_path: /var/run/nginx.pid
+    custom_nginx_sbin_path: /usr/sbin/nginx
+    custom_nginx_prefix_directory: /etc/nginx
+    custom_nginx_log_directory: /var/log/nginx
+    custom_nginx_build_options:
+      - "--prefix={{ custom_nginx_prefix_directory }}"
+      - "--sbin-path={{ custom_nginx_sbin_path }}"
+      - "--modules-path={{ custom_nginx_modules_directory }}"
+      - ...
+    # jdauphant.nginx
+    nginx_installation_type: configuration-only
+    nginx_installation_types_using_service: configuration-only
+    nginx_binary_name: "{{ custom_nginx_sbin_path }}"
+    nginx_conf_dir: "{{ custom_nginx_prefix_directory }}"
+    nginx_log_dir: "{{ custom_nginx_log_directory }}"
+    nginx_pid_file: "{{ custom_nginx_pid_path }}"
+    nginx_service_name: nginx
+    nginx_user: "{{ custom_nginx_user }}"
+    nginx_http_params:
+      - sendfile on
+      - server_tokens off
+      - ...
+      - "access_log {{ custom_nginx_log_directory }}/access.log"
+      - "error_log {{custom_nginx_log_directory}}/error.log {{ nginx_error_log_level }}"
+    nginx_sites:
+       foo:
+         - listen 8080
+         - server_name localhost
+         - root /tmp/site1
+         - location / { try_files $uri $uri/ /index.html; }
+         - location /images/ { try_files $uri $uri/ /index.html; }
+       bar:
+         - listen 9090
+         - server_name ansible
+         - root /tmp/site2
+         - location / { try_files $uri $uri/ /index.html; }
+         - location /images/ { try_files $uri $uri/ /index.html; }
+    nginx_configs:
+       proxy:
+          - proxy_set_header X-Real-IP $remote_addr
+          - proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for
+  roles:
+    - timorunge.custom-nginx
+    - jdauphant.nginx
+```
+
+## 5) Adding logrotate support
+
+Per default there is no log rotation for the nginx logs since there is already
+a powerful role out there. Take a look at
+[nickhammond.logrotate](https://github.com/nickhammond/ansible-logrotate).
+
+```yaml
+- hosts: nginx
+  vars:
+    custom_nginx_version: 1.15.0
+    custom_nginx_user: nginx
+    custom_nginx_group: nginx
+    custom_nginx_pid_path: /var/run/nginx.pid
+    custom_nginx_log_directory: /var/log/nginx
+    custom_nginx_build_options:
+      - "--prefix={{ custom_nginx_prefix_directory }}"
+      - "--sbin-path={{ custom_nginx_sbin_path }}"
+      - "--modules-path={{ custom_nginx_modules_directory }}"
+      - ...
+      - "--error-log-path={{ custom_nginx_log_directory }}/error.log"
+      - "--http-log-path={{ custom_nginx_log_directory }}/access.log"
+      - ...
+    # nickhammond.logrotate
+    logrotate_scripts:
+      - name: nginx
+        paths:
+          - "{{ custom_nginx_log_directory }}/*.log"
+        options:
+          - daily
+          - missingok
+          - rotate 14
+          - compress
+          - delaycompress
+          - notifempty
+          - "create 640 {{ custom_nginx_user }} {{ custom_nginx_group }}"
+          - sharedscripts
+        scripts:
+          postrotate: "if [ -f {{ custom_nginx_pid_path }} ]; then kill -USR1 `cat {{ custom_nginx_pid_path }}` ; fi"
+  roles:
+    - timorunge.custom-nginx
+    - nickhammond.logrotate
 ```
 
 nginx build options
@@ -377,6 +480,8 @@ An overview of the build options for nginx (1.14.0).
 
 Testing
 -------
+
+[![Build Status](https://travis-ci.org/timorunge/ansible-custom-nginx.svg?branch=master)](https://travis-ci.org/timorunge/ansible-custom-nginx)
 
 Testing is done with [Docker Compose](https://docs.docker.com/compose/) which is
 bringing up the following containers:
