@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-echo '[defaults]\nroles_path=/etc/ansible/roles' > ansible.cfg
+echo $'[defaults]\nroles_path=/etc/ansible/roles' > ansible.cfg
 ansible-lint /etc/ansible/roles/${ENV_ROLE_NAME}/tasks/main.yml
 ansible-playbook test.yml -i inventory --syntax-check
 ansible-playbook test.yml -i inventory --connection=local --become -vvvv
