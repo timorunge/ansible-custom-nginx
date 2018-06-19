@@ -31,7 +31,7 @@ or higher in order to apply [patches](#2-apply-patches-to-the-source).
 You can simply use pip to install the current release candidate:
 
 ```sh
-pip install ansible==2.6.0rc2
+pip install ansible==2.6.0rc3
 ```
 
 All platform requirements are listed in the metadata file.
@@ -495,7 +495,7 @@ bringing up the following containers:
 * Ubuntu 18.04
 * Ubuntu 18.10
 
-Ansible 2.6.0rc2 is installed on all containers and is applying a
+Ansible 2.6.0rc3 is installed on all containers and is applying a
 [test playbook](tests/test.yml) locally.
 
 For further details and additional checks take a look at the

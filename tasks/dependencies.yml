@@ -2,10 +2,9 @@
 
 - name: Install nginx build dependencies
   package:
-    name: "{{ item }}"
+    name: "{{ custom_nginx_dependency_pkgs | default(omit) }}"
     state: present
     update_cache: yes
-  with_items: "{{ custom_nginx_dependency_pkgs | default(omit) }}"
 
 - name: Create required directories
   file:
