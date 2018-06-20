@@ -2,9 +2,12 @@
 
 custom_nginx_dependency_pkgs:
   - build-essential
-  - gcc
   - gawk
+  - gcc
+  - geoip-database
   - gzip
+  - libgeoip-dev
+  - libgeoip1
   - libghc-regex-pcre-dev
   - libpcre3-dev
   - libssl-dev

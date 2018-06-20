@@ -3,8 +3,12 @@
 custom_nginx_dependency_pkgs:
   - "@Development Tools"
   - gd-devel
+  - GeoIP
+  - GeoIP-data
+  - GeoIP-devel
   - initscripts
   - libxml2-devel
   - libxslt-devel
   - openssl-devel
   - pcre-devel
+  - zlib-devel
