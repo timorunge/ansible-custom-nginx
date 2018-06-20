@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 echo $'[defaults]\nroles_path=/etc/ansible/roles' > ansible.cfg
