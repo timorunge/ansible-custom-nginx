@@ -1,4 +1,4 @@
-custom-nginx
+custom_nginx
 ============
 
 This role is building and installing nginx directly out of the source code.
@@ -40,7 +40,7 @@ Install
 -------
 
 ```sh
-ansible-galaxy install timorunge.custom-nginx
+ansible-galaxy install timorunge.custom_nginx
 ```
 
 Role Variables
@@ -143,7 +143,7 @@ documentation](http://nginx.org/en/docs/configure.html).
       - "--modules-path={{ custom_nginx_modules_directory }}"
       - ...
   roles:
-    - timorunge.custom-nginx
+    - timorunge.custom_nginx
 ```
 
 ## 2) Apply patches to the source
@@ -163,7 +163,7 @@ documentation](http://nginx.org/en/docs/configure.html).
       - "--modules-path={{ custom_nginx_modules_directory }}"
       - ...
   roles:
-    - timorunge.custom-nginx
+    - timorunge.custom_nginx
 ```
 
 ### 2.1) Patches (a little bit) explained
@@ -196,7 +196,7 @@ custom_nginx_patches:
       - "--modules-path={{ custom_nginx_modules_directory }}"
       - ...
   roles:
-    - timorunge.custom-nginx
+    - timorunge.custom_nginx
 ```
 
 ## 4) nginx configuration with jdauphant.nginx
@@ -255,7 +255,7 @@ with [jdauphant.nginx](https://github.com/jdauphant/ansible-role-nginx).
           - proxy_set_header X-Real-IP $remote_addr
           - proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for
   roles:
-    - timorunge.custom-nginx
+    - timorunge.custom_nginx
     - jdauphant.nginx
 ```
 
@@ -298,7 +298,7 @@ a powerful role out there. Take a look at
         scripts:
           postrotate: "if [ -f {{ custom_nginx_pid_path }} ]; then kill -USR1 `cat {{ custom_nginx_pid_path }}` ; fi"
   roles:
-    - timorunge.custom-nginx
+    - timorunge.custom_nginx
     - nickhammond.logrotate
 ```
 

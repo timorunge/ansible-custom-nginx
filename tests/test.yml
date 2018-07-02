@@ -56,4 +56,4 @@
       - '--with-stream_ssl_preread_module'
 
   roles:
-    - timorunge.custom-nginx
+    - timorunge.custom_nginx

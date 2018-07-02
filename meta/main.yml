@@ -3,6 +3,7 @@
 galaxy_info:
   author: Timo Runge
   description: Custom nginx installation including patch management for the nginx source.
+  role_name: custom_nginx
   license: BSD
   min_ansible_version: 2.6.0
   platforms:

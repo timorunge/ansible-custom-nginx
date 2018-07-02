@@ -8,7 +8,7 @@ services:
       dockerfile: ./docker/Dockerfile_CentOS_7
       args:
         ANSIBLE_VERSION: 2.6.0rc3
-        ROLE_NAME: timorunge.custom-nginx
+        ROLE_NAME: timorunge.custom_nginx
         WORKDIR: /ansible
   debian_8.10:
     build:
@@ -16,7 +16,7 @@ services:
       dockerfile: ./docker/Dockerfile_Debian_8.10
       args:
         ANSIBLE_VERSION: 2.6.0rc3
-        ROLE_NAME: timorunge.custom-nginx
+        ROLE_NAME: timorunge.custom_nginx
         WORKDIR: /ansible
   debian_9.4:
     build:
@@ -24,7 +24,7 @@ services:
       dockerfile: ./docker/Dockerfile_Debian_9.4
       args:
         ANSIBLE_VERSION: 2.6.0rc3
-        ROLE_NAME: timorunge.custom-nginx
+        ROLE_NAME: timorunge.custom_nginx
         WORKDIR: /ansible
   ubuntu_14.04:
     build:
@@ -32,7 +32,7 @@ services:
       dockerfile: ./docker/Dockerfile_Ubuntu_14.04
       args:
         ANSIBLE_VERSION: 2.6.0rc3
-        ROLE_NAME: timorunge.custom-nginx
+        ROLE_NAME: timorunge.custom_nginx
         PYTHON_VERSION: 2.7.15
         WORKDIR: /ansible
   ubuntu_16.04:
@@ -41,7 +41,7 @@ services:
       dockerfile: ./docker/Dockerfile_Ubuntu_16.04
       args:
         ANSIBLE_VERSION: 2.6.0rc3
-        ROLE_NAME: timorunge.custom-nginx
+        ROLE_NAME: timorunge.custom_nginx
         WORKDIR: /ansible
   ubuntu_17.10:
     build:
@@ -49,7 +49,7 @@ services:
       dockerfile: ./docker/Dockerfile_Ubuntu_17.10
       args:
         ANSIBLE_VERSION: 2.6.0rc3
-        ROLE_NAME: timorunge.custom-nginx
+        ROLE_NAME: timorunge.custom_nginx
         WORKDIR: /ansible
   ubuntu_18.04:
     build:
@@ -57,7 +57,7 @@ services:
       dockerfile: ./docker/Dockerfile_Ubuntu_18.04
       args:
         ANSIBLE_VERSION: 2.6.0rc3
-        ROLE_NAME: timorunge.custom-nginx
+        ROLE_NAME: timorunge.custom_nginx
         WORKDIR: /ansible
   ubuntu_18.10:
     build:
@@ -65,5 +65,5 @@ services:
       dockerfile: ./docker/Dockerfile_Ubuntu_18.10
       args:
         ANSIBLE_VERSION: 2.6.0rc3
-        ROLE_NAME: timorunge.custom-nginx
+        ROLE_NAME: timorunge.custom_nginx
         WORKDIR: /ansible
