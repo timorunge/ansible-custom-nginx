@@ -10,6 +10,8 @@ services:
         ANSIBLE_VERSION: 2.6.2
         ROLE_NAME: timorunge.custom_nginx
         WORKDIR: /ansible
+    environment:
+      TRAVIS: ${TRAVIS}
   debian_8_10:
     build:
       context: .
@@ -18,6 +20,8 @@ services:
         ANSIBLE_VERSION: 2.6.2
         ROLE_NAME: timorunge.custom_nginx
         WORKDIR: /ansible
+    environment:
+      TRAVIS: ${TRAVIS}
   debian_9_4:
     build:
       context: .
@@ -26,6 +30,8 @@ services:
         ANSIBLE_VERSION: 2.6.2
         ROLE_NAME: timorunge.custom_nginx
         WORKDIR: /ansible
+    environment:
+      TRAVIS: ${TRAVIS}
   debian_10:
     build:
       context: .
@@ -34,6 +40,8 @@ services:
         ANSIBLE_VERSION: 2.6.2
         ROLE_NAME: timorunge.custom_nginx
         WORKDIR: /ansible
+    environment:
+      TRAVIS: ${TRAVIS}
   ubuntu_16_04:
     build:
       context: .
@@ -42,6 +50,8 @@ services:
         ANSIBLE_VERSION: 2.6.2
         ROLE_NAME: timorunge.custom_nginx
         WORKDIR: /ansible
+    environment:
+      TRAVIS: ${TRAVIS}
   ubuntu_17_10:
     build:
       context: .
@@ -50,6 +60,8 @@ services:
         ANSIBLE_VERSION: 2.6.2
         ROLE_NAME: timorunge.custom_nginx
         WORKDIR: /ansible
+    environment:
+      TRAVIS: ${TRAVIS}
   ubuntu_18_04:
     build:
       context: .
@@ -58,6 +70,8 @@ services:
         ANSIBLE_VERSION: 2.6.2
         ROLE_NAME: timorunge.custom_nginx
         WORKDIR: /ansible
+    environment:
+      TRAVIS: ${TRAVIS}
   ubuntu_18_10:
     build:
       context: .
@@ -66,3 +80,5 @@ services:
         ANSIBLE_VERSION: 2.6.2
         ROLE_NAME: timorunge.custom_nginx
         WORKDIR: /ansible
+    environment:
+      TRAVIS: ${TRAVIS}
