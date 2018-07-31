@@ -24,13 +24,14 @@ recommend [jdauphant.nginx](https://github.com/jdauphant/ansible-role-nginx).
 Requirements
 ------------
 
-This role requires [Ansible 2.6.0](https://docs.ansible.com/ansible/devel/roadmap/ROADMAP_2_6.html)
+This role requires
+[Ansible 2.6.0](https://docs.ansible.com/ansible/devel/roadmap/ROADMAP_2_6.html)
 or higher in order to apply [patches](#2-apply-patches-to-the-source).
 
-You can simply use pip to install (and define) the latest stable version:
+You can simply use pip to install (and define) a stable version:
 
 ```sh
-pip install ansible==2.6.0
+pip install ansible==2.6.2
 ```
 
 All platform requirements are listed in the metadata file.
@@ -45,8 +46,9 @@ ansible-galaxy install timorunge.custom_nginx
 Role Variables
 --------------
 
-The variables that can be passed to this role and a brief description about
-them are as follows. (For all variables, take a look at [defaults/main.yml](defaults/main.yml))
+The variables that can be passed to this role. You can find a brief description
+in this paragraph. For all variables, take a look at
+[defaults/main.yml](defaults/main.yml).
 
 ```yaml
 # Version definition:
@@ -486,14 +488,15 @@ Testing is done with [Docker Compose](https://docs.docker.com/compose/) which is
 bringing up the following containers:
 
 * CentOS 7
-* Debian 8.10
-* Debian 9.4
-* Ubuntu 16.04
-* Ubuntu 17.10
-* Ubuntu 18.04
-* Ubuntu 18.10
+* Debian 8.10 (Jessie)
+* Debian 9.4 (Stretch)
+* Debian 10 (Buster)
+* Ubuntu 16.04 (Xenial Xerus)
+* Ubuntu 17.10 (Artful Aardvark)
+* Ubuntu 18.04 (Bionic Beaver)
+* Ubuntu 18.10 (Cosmic Cuttlefish)
 
-Ansible 2.6.0 is installed on all containers and is applying a
+Ansible 2.6.2 is installed on all containers and is applying a
 [test playbook](tests/test.yml) locally.
 
 For further details and additional checks take a look at the

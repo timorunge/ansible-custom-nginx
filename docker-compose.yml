@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: ./docker/Dockerfile_CentOS_7
       args:
-        ANSIBLE_VERSION: 2.6.0
+        ANSIBLE_VERSION: 2.6.2
         ROLE_NAME: timorunge.custom_nginx
         WORKDIR: /ansible
   debian_8_10:
@@ -15,7 +15,7 @@ services:
       context: .
       dockerfile: ./docker/Dockerfile_Debian_8.10
       args:
-        ANSIBLE_VERSION: 2.6.0
+        ANSIBLE_VERSION: 2.6.2
         ROLE_NAME: timorunge.custom_nginx
         WORKDIR: /ansible
   debian_9_4:
@@ -23,7 +23,15 @@ services:
       context: .
       dockerfile: ./docker/Dockerfile_Debian_9.4
       args:
-        ANSIBLE_VERSION: 2.6.0
+        ANSIBLE_VERSION: 2.6.2
+        ROLE_NAME: timorunge.custom_nginx
+        WORKDIR: /ansible
+  debian_10:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile_Debian_10
+      args:
+        ANSIBLE_VERSION: 2.6.2
         ROLE_NAME: timorunge.custom_nginx
         WORKDIR: /ansible
   ubuntu_16_04:
@@ -31,7 +39,7 @@ services:
       context: .
       dockerfile: ./docker/Dockerfile_Ubuntu_16.04
       args:
-        ANSIBLE_VERSION: 2.6.0
+        ANSIBLE_VERSION: 2.6.2
         ROLE_NAME: timorunge.custom_nginx
         WORKDIR: /ansible
   ubuntu_17_10:
@@ -39,7 +47,7 @@ services:
       context: .
       dockerfile: ./docker/Dockerfile_Ubuntu_17.10
       args:
-        ANSIBLE_VERSION: 2.6.0
+        ANSIBLE_VERSION: 2.6.2
         ROLE_NAME: timorunge.custom_nginx
         WORKDIR: /ansible
   ubuntu_18_04:
@@ -47,7 +55,7 @@ services:
       context: .
       dockerfile: ./docker/Dockerfile_Ubuntu_18.04
       args:
-        ANSIBLE_VERSION: 2.6.0
+        ANSIBLE_VERSION: 2.6.2
         ROLE_NAME: timorunge.custom_nginx
         WORKDIR: /ansible
   ubuntu_18_10:
@@ -55,6 +63,6 @@ services:
       context: .
       dockerfile: ./docker/Dockerfile_Ubuntu_18.10
       args:
-        ANSIBLE_VERSION: 2.6.0
+        ANSIBLE_VERSION: 2.6.2
         ROLE_NAME: timorunge.custom_nginx
         WORKDIR: /ansible

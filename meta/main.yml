@@ -9,13 +9,19 @@ galaxy_info:
   platforms:
   - name: Debian
     versions:
-      - all
+      - jessie
+      - stretch
+      - buster
   - name: EL
     versions:
       - 7
   - name: Ubuntu
     versions:
-      - all
+      - trusty
+      - xenial
+      - artful
+      - bionic
+      - cosmic
   galaxy_tags:
     - compile
     - nginx

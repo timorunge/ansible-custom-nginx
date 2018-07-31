@@ -3,7 +3,7 @@
 sudo: true
 
 env:
-  - DOCKER_COMPOSE_VERSION=1.21.2
+  - DOCKER_COMPOSE_VERSION=1.22.0
 
 services:
   - docker
