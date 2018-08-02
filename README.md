@@ -129,12 +129,12 @@ You can find the nginx build options either in [this
 document](#nginx-build-options) or online in the official [nginx
 documentation](http://nginx.org/en/docs/configure.html).
 
-## 1) Build nginx according to your needs
+### 1) Build nginx according to your needs
 
 ```yaml
 - hosts: nginx
   vars:
-    custom_nginx_version: 1.15.0
+    custom_nginx_version: 1.15.2
     custom_nginx_conf_path: /etc/nginx/nginx.conf
     custom_nginx_prefix_directory: /etc/nginx
     custom_nginx_sbin_path: /usr/sbin/nginx
@@ -147,12 +147,12 @@ documentation](http://nginx.org/en/docs/configure.html).
     - timorunge.custom_nginx
 ```
 
-## 2) Apply patches to the source
+### 2) Apply patches to the source
 
 ```yaml
 - hosts: nginx
   vars:
-    custom_nginx_version: 1.15.0
+    custom_nginx_version: 1.15.2
     custom_nginx_patches:
       disable_h2c_table_update:
         dest_file: src/http/v2/ngx_http_v2.c
@@ -167,7 +167,7 @@ documentation](http://nginx.org/en/docs/configure.html).
     - timorunge.custom_nginx
 ```
 
-### 2.1) Patches (a little bit) explained
+#### 2.1) Patches (a little bit) explained
 
 ```yaml
 custom_nginx_patches:
@@ -183,12 +183,12 @@ custom_nginx_patches:
     state: present
 ```
 
-## 3) Override init.d and systemd templates
+### 3) Override init.d and systemd templates
 
 ```yaml
 - hosts: nginx
   vars:
-    custom_nginx_version: 1.15.0
+    custom_nginx_version: 1.15.2
     custom_nginx_init_template: roles/loadbalancer/templates/nginx.service.j2
     custom_nginx_service_template: roles/loadbalancer/templates/nginx.init.j2
     custom_nginx_build_options:
@@ -200,7 +200,7 @@ custom_nginx_patches:
     - timorunge.custom_nginx
 ```
 
-## 4) nginx configuration with jdauphant.nginx
+### 4) nginx configuration with jdauphant.nginx
 
 Like mentioned in the beginning, this role is not build for the configuration
 of nginx itself.
@@ -211,7 +211,7 @@ with [jdauphant.nginx](https://github.com/jdauphant/ansible-role-nginx).
 ```yaml
 - hosts: nginx
   vars:
-    custom_nginx_version: 1.15.0
+    custom_nginx_version: 1.15.2
     custom_nginx_user: nginx
     custom_nginx_conf_path: /etc/nginx/nginx.conf
     custom_nginx_pid_path: /var/run/nginx.pid
@@ -260,7 +260,7 @@ with [jdauphant.nginx](https://github.com/jdauphant/ansible-role-nginx).
     - jdauphant.nginx
 ```
 
-## 5) Adding logrotate support
+### 5) Adding logrotate support
 
 Per default there is no log rotation for the nginx logs since there is already
 a powerful role out there. Take a look at
@@ -269,7 +269,7 @@ a powerful role out there. Take a look at
 ```yaml
 - hosts: nginx
   vars:
-    custom_nginx_version: 1.15.0
+    custom_nginx_version: 1.15.2
     custom_nginx_user: nginx
     custom_nginx_group: nginx
     custom_nginx_pid_path: /var/run/nginx.pid

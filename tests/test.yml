@@ -5,7 +5,7 @@
   gather_facts: true
 
   vars:
-    custom_nginx_version: 1.15.0
+    custom_nginx_version: 1.15.2
     custom_nginx_conf_path: /etc/nginx/nginx.conf
     custom_nginx_prefix_directory: /etc/nginx
     custom_nginx_sbin_path: /usr/local/nginx/sbin/nginx

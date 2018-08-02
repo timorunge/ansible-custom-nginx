@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-printf '[defaults]\nroles_path=/etc/ansible/roles' > ansible.cfg
+printf '[defaults]\nroles_path=/etc/ansible/roles\ngather_timeout=60' > ansible.cfg
 ansible-lint /etc/ansible/roles/${ENV_ROLE_NAME}/tasks/main.yml
 ansible-playbook ${ENV_WORKDIR}/test.yml -i ${ENV_WORKDIR}/inventory --syntax-check
 ansible-playbook ${ENV_WORKDIR}/test.yml -i ${ENV_WORKDIR}/inventory --connection=local --become $(test -z ${TRAVIS} && echo '-vvvv')
