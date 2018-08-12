@@ -9,6 +9,7 @@ Tested platforms are:
 * Debian
   * 8.10
   * 9.4
+  * 10
 * EL
   * 7
 * Ubuntu

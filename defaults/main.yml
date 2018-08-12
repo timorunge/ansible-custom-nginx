@@ -59,6 +59,9 @@ custom_nginx_patches: []
 
 # Build options
 
+# Force a build
+custom_nginx_force_build: false
+
 custom_nginx_build_options:
   - "--prefix={{ custom_nginx_prefix_directory }}"
   - "--sbin-path={{ custom_nginx_sbin_path }}"

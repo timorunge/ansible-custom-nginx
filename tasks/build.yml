@@ -7,5 +7,6 @@
   when: >
         (custom_nginx_checksum_catalog.changed) or
         (custom_nginx_patches.changed) or
-        (custom_nginx_source_files.changed)
+        (custom_nginx_source_files.changed) or
+        (custom_nginx_force_build)
   register: custom_nginx_build
