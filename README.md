@@ -513,6 +513,14 @@ docker-compose up
 docker-compose down
 ```
 
+Since the build time on Travis is limited for public repositories the
+[automated tests](.travis-docker-compose.yml) are limited to:
+
+* CentOS 7
+* Debian 9.4 (Stretch)
+* Ubuntu 16.04 (Xenial Xerus)
+* Ubuntu 18.04 (Bionic Beaver)
+
 Dependencies
 ------------
 

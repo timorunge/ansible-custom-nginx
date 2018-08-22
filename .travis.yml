@@ -16,12 +16,12 @@ install:
   - docker-compose --version
 
 script:
-  - docker-compose config
-  - docker-compose pull
-  - docker-compose build
-  - docker-compose up --no-start
-  - docker-compose up
-  - docker-compose down
+  - docker-compose -f .travis-docker-compose.yml config
+  - docker-compose -f .travis-docker-compose.yml pull
+  - docker-compose -f .travis-docker-compose.yml build
+  - docker-compose -f .travis-docker-compose.yml up --no-start
+  - docker-compose -f .travis-docker-compose.yml up
+  - docker-compose -f .travis-docker-compose.yml down
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

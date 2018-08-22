@@ -12,5 +12,5 @@
     target: install
   when: custom_nginx_compile.changed
   notify:
-     - restart nginx
-     - systemctl daemon-reload
+    - systemctl daemon-reload
+    - restart nginx
