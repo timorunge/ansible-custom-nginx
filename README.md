@@ -32,7 +32,7 @@ or higher in order to apply [patches](#2-apply-patches-to-the-source).
 You can simply use pip to install (and define) a stable version:
 
 ```sh
-pip install ansible==2.6.2
+pip install ansible==2.6.3
 ```
 
 All platform requirements are listed in the metadata file.
@@ -485,8 +485,9 @@ Testing
 
 [![Build Status](https://travis-ci.org/timorunge/ansible-custom-nginx.svg?branch=master)](https://travis-ci.org/timorunge/ansible-custom-nginx)
 
-Testing is done with [Docker Compose](https://docs.docker.com/compose/) which is
-bringing up the following containers:
+Tests are done with [Docker](https://www.docker.com) and
+[docker_test_runner](https://github.com/timorunge/docker-test-runner) which
+brings up the following containers:
 
 * CentOS 7
 * Debian 8.10 (Jessie)
@@ -497,20 +498,17 @@ bringing up the following containers:
 * Ubuntu 18.04 (Bionic Beaver)
 * Ubuntu 18.10 (Cosmic Cuttlefish)
 
-Ansible 2.6.2 is installed on all containers and is applying a
-[test playbook](tests/test.yml) locally.
+Ansible 2.6.3 is installed on all containers and a
+[test playbook](tests/test.yml) is getting applied.
 
 For further details and additional checks take a look at the
-[Docker entrypoint](docker/docker-entrypoint.sh).
+[docker_test_runner configuration](tests/docker_test_runner.yml) and the
+[Docker entrypoint](tests/docker/docker-entrypoint.sh).
 
 ```sh
-# Testing locally with docker-compose:
-docker-compose config
-docker-compose pull
-docker-compose build
-docker-compose up --no-start
-docker-compose up
-docker-compose down
+# Testing locally:
+curl https://raw.githubusercontent.com/timorunge/docker-test-runner/master/install.sh | sh
+./docker_test_runner.py -f tests/docker_test_runner.yml
 ```
 
 Since the build time on Travis is limited for public repositories the
