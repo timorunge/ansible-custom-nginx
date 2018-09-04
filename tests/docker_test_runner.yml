@@ -1,8 +1,14 @@
 ---
 
+threads: 4
+
+log_level: INFO
+
+disable_logging: False
+
 docker_image_build_args:
   ansible_role: timorunge.custom_nginx
-  ansible_version: 2.6.3
+  ansible_version: "2.6.3"
 
 docker_image_path: "__PATH__/tests/docker"
 
@@ -17,7 +23,7 @@ docker_images:
 
 docker_container_environments:
   "1_5_2":
-    custom_nginx_version: !!str 1.15.2
+    custom_nginx_version: "1.15.2"
 
 docker_container_volumes:
   "__PATH__":
