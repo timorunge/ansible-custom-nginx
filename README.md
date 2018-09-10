@@ -76,7 +76,7 @@ custom_nginx_modules_directory: /usr/lib/nginx/modules
 custom_nginx_patches:
   disable_h2c_table_update:
     dest_file: src/http/v2/ngx_http_v2.c
-    patch_file: roles/loadbalancer/files/nginx-patches/disable_h2c_table_update.patch
+    patch_file: "roles/loadbalancer/files/nginx-patches/disable_h2c_table_update-{{ custom_nginx_version }}.patch"
     state: present
 
 # Build options
@@ -135,7 +135,7 @@ documentation](http://nginx.org/en/docs/configure.html).
 ```yaml
 - hosts: nginx
   vars:
-    custom_nginx_version: 1.15.2
+    custom_nginx_version: 1.15.3
     custom_nginx_conf_path: /etc/nginx/nginx.conf
     custom_nginx_prefix_directory: /etc/nginx
     custom_nginx_sbin_path: /usr/sbin/nginx
@@ -153,11 +153,11 @@ documentation](http://nginx.org/en/docs/configure.html).
 ```yaml
 - hosts: nginx
   vars:
-    custom_nginx_version: 1.15.2
+    custom_nginx_version: 1.15.3
     custom_nginx_patches:
       disable_h2c_table_update:
         dest_file: src/http/v2/ngx_http_v2.c
-        patch_file: disable_h2c_table_update.patch
+        patch_file: "disable_h2c_table_update-{{ custom_nginx_version }}.patch"
         state: present
     custom_nginx_build_options:
       - "--prefix={{ custom_nginx_prefix_directory }}"
@@ -179,7 +179,7 @@ custom_nginx_patches:
     # If you're calling the custom_nginx_patches from another role which is
     # called e.g. loadbalancer and you've the file stored inside this role
     # it should look like this:
-    patch_file: roles/loadbalancer/files/nginx-patches/disable_h2c_table_update.patch
+    patch_file: "roles/loadbalancer/files/nginx-patches/disable_h2c_table_update-{{ custom_nginx_version }}.patch"
     # State of the patch, can be "present" (default) or "absent":
     state: present
 ```
@@ -189,7 +189,7 @@ custom_nginx_patches:
 ```yaml
 - hosts: nginx
   vars:
-    custom_nginx_version: 1.15.2
+    custom_nginx_version: 1.15.3
     custom_nginx_init_template: roles/loadbalancer/templates/nginx.service.j2
     custom_nginx_service_template: roles/loadbalancer/templates/nginx.init.j2
     custom_nginx_build_options:
@@ -212,7 +212,7 @@ with [jdauphant.nginx](https://github.com/jdauphant/ansible-role-nginx).
 ```yaml
 - hosts: nginx
   vars:
-    custom_nginx_version: 1.15.2
+    custom_nginx_version: 1.15.3
     custom_nginx_user: nginx
     custom_nginx_conf_path: /etc/nginx/nginx.conf
     custom_nginx_pid_path: /var/run/nginx.pid
@@ -270,7 +270,7 @@ a powerful role out there. Take a look at
 ```yaml
 - hosts: nginx
   vars:
-    custom_nginx_version: 1.15.2
+    custom_nginx_version: 1.15.3
     custom_nginx_user: nginx
     custom_nginx_group: nginx
     custom_nginx_pid_path: /var/run/nginx.pid

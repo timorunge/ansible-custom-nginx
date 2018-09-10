@@ -1,5 +1,5 @@
---- src/http/v2/ngx_http_v2.c   2018-04-17 17:22:36.000000000 +0200
-+++ src/http/v2/ngx_http_v2.c.disable_h2c_table_update.patch   2018-06-13 10:28:18.000000000 +0200
+--- a/src/http/v2/ngx_http_v2.c   2018-04-17 17:22:36.000000000 +0200
++++ b/src/http/v2/ngx_http_v2.c   2018-06-13 10:28:18.000000000 +0200
 @@ -270,7 +270,7 @@
 
      h2c->frame_size = NGX_HTTP_V2_DEFAULT_FRAME_SIZE;
