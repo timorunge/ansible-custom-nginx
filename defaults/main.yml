@@ -3,7 +3,7 @@
 # General
 
 # Version definition:
-custom_nginx_version: 1.14.0
+custom_nginx_version: 1.15.3
 
 # Enable / disable nginx as a service
 custom_nginx_service_enabled: yes
