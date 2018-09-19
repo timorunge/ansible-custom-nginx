@@ -10,10 +10,10 @@
     dest: /lib/systemd/system/nginx.service
     mode: 0644
     src: "{{ custom_nginx_service_template }}"
-  when: ansible_service_mgr == "systemd"
   notify:
     - systemctl daemon-reload
     - restart nginx
+  when: ansible_service_mgr == "systemd"
 
 - name: Create nginx init script
   template:

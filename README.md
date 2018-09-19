@@ -53,18 +53,21 @@ in this paragraph. For all variables, take a look at
 
 ```yaml
 # Version definition:
+# Type: Int
 custom_nginx_version: 1.15.3
 
 # Basic settings for building nginx from sources.
 # Align them with your build options.
 
 # Paths:
+# Type: Str
 custom_nginx_sbin_path: /usr/local/nginx/sbin/nginx
 custom_nginx_conf_path: /usr/local/nginx/conf/nginx.conf
 custom_nginx_pid_path: /var/run/nginx.pid
 custom_nginx_lock_path: /var/lock/nginx.lock
 
 # Directories:
+# Type: Str
 custom_nginx_prefix_directory: /usr/local/nginx
 custom_nginx_log_directory: /var/log/nginx
 custom_nginx_cache_directory: /var/cache/nginx
@@ -73,6 +76,7 @@ custom_nginx_modules_directory: /usr/lib/nginx/modules
 # In this section you can apply custom patches to nginx.
 # You can find one example below in this document, see 2.1)
 # Patches explained.
+# Type: Dict
 custom_nginx_patches:
   disable_h2c_table_update:
     dest_file: src/http/v2/ngx_http_v2.c
@@ -80,6 +84,7 @@ custom_nginx_patches:
     state: present
 
 # Build options
+# Type: List
 custom_nginx_build_options:
   - "--prefix={{ custom_nginx_prefix_directory }}"
   - "--sbin-path={{ custom_nginx_sbin_path }}"
@@ -96,30 +101,30 @@ custom_nginx_build_options:
   - "--http-scgi-temp-path={{ custom_nginx_cache_directory }}/scgi_temp"
   - "--user={{ custom_nginx_user }}"
   - "--group={{ custom_nginx_group }}"
-  - '--with-compat'
-  - '--with-file-aio'
-  - '--with-threads'
-  - '--with-http_addition_module'
-  - '--with-http_auth_request_module'
-  - '--with-http_dav_module'
-  - '--with-http_flv_module'
-  - '--with-http_gunzip_module'
-  - '--with-http_geoip_module=dynamic'
-  - '--with-http_gzip_static_module'
-  - '--with-http_mp4_module'
-  - '--with-http_random_index_module'
-  - '--with-http_realip_module'
-  - '--with-http_secure_link_module'
-  - '--with-http_slice_module'
-  - '--with-http_ssl_module'
-  - '--with-http_stub_status_module'
-  - '--with-http_sub_module'
-  - '--with-http_v2_module'
-  - '--with-stream'
-  - '--with-stream_geoip_module=dynamic'
-  - '--with-stream_realip_module'
-  - '--with-stream_ssl_module'
-  - '--with-stream_ssl_preread_module'
+  - "--with-compat"
+  - "--with-file-aio"
+  - "--with-threads"
+  - "--with-http_addition_module"
+  - "--with-http_auth_request_module"
+  - "--with-http_dav_module"
+  - "--with-http_flv_module"
+  - "--with-http_gunzip_module"
+  - "--with-http_geoip_module=dynamic"
+  - "--with-http_gzip_static_module"
+  - "--with-http_mp4_module"
+  - "--with-http_random_index_module"
+  - "--with-http_realip_module"
+  - "--with-http_secure_link_module"
+  - "--with-http_slice_module"
+  - "--with-http_ssl_module"
+  - "--with-http_stub_status_module"
+  - "--with-http_sub_module"
+  - "--with-http_v2_module"
+  - "--with-stream"
+  - "--with-stream_geoip_module=dynamic"
+  - "--with-stream_realip_module"
+  - "--with-stream_ssl_module"
+  - "--with-stream_ssl_preread_module"
 ```
 
 Examples

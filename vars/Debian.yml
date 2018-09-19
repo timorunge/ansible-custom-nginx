@@ -1,5 +1,7 @@
 ---
 
+# List of dependency packages
+# Type: List
 custom_nginx_dependency_pkgs:
   - build-essential
   - gawk

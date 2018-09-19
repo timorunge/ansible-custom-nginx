@@ -11,7 +11,7 @@
     mode: 0755
     path: "{{ item }}"
     state: directory
-  with_items: "{{ custom_nginx_all_directories }}"
+  loop: "{{ custom_nginx_all_directories | flatten(levels=1) }}"
 
 - name: Create nginx group
   group:

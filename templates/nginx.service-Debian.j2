@@ -1,5 +1,5 @@
 # {{ ansible_managed }}
-# Service enabled: {{ custom_nginx_service_enabled | default(yes) }}
+# Service enabled: {{ custom_nginx_service_enabled | default('yes') }}
 
 [Unit]
 Description=nginx - high performance web server

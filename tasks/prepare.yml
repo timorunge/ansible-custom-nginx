@@ -12,6 +12,6 @@
     dest: "{{ custom_nginx_install_dir }}/build"
     src: "{{ custom_nginx_source_download.dest }}"
     extra_opts:
-      - '--overwrite'
-  when: custom_nginx_source_download.changed
+      - "--overwrite"
   register: custom_nginx_source_files
+  when: custom_nginx_source_download.changed

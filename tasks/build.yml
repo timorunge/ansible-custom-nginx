@@ -4,9 +4,9 @@
   args:
     chdir: "{{ custom_nginx_install_dir }}/build/nginx-{{ custom_nginx_version }}"
   command: "./configure {{ custom_nginx_build_options | join(' ') }}"
-  when: >
-        (custom_nginx_checksum_catalog.changed) or
-        (custom_nginx_patches.changed) or
-        (custom_nginx_source_files.changed) or
-        (custom_nginx_force_build)
   register: custom_nginx_build
+  when: >
+      (custom_nginx_checksum_catalog.changed) or
+      (custom_nginx_patches.changed) or
+      (custom_nginx_source_files.changed) or
+      (custom_nginx_force_build)

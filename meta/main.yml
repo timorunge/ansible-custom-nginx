@@ -27,5 +27,4 @@ galaxy_info:
     - nginx
     - system
     - web
-
 dependencies: []

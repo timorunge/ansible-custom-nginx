@@ -5,5 +5,6 @@
     dest: "{{ custom_nginx_install_dir }}/build/nginx-{{ custom_nginx_version }}/{{ item.value.dest_file }}"
     src: "{{ item.value.patch_file }}"
     state: "{{ item.value.state | default(present) }}"
-  with_dict: "{{ custom_nginx_patches | default(omit) }}"
+  loop: "{{ custom_nginx_patches | dict2items }}"
   register: custom_nginx_patches
+  when: custom_nginx_patches is defined
