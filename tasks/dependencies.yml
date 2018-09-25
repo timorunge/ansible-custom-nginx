@@ -2,9 +2,9 @@
 
 - name: Install nginx build dependencies
   package:
-    name: "{{ custom_nginx_dependency_pkgs | default(omit) }}"
+    name: "{{ custom_nginx_dependency_pkgs }}"
     state: present
-    update_cache: yes
+    update_cache: "{{ omit if ((ansible_pkg_mgr == 'dnf') and (ansible_version is version('2.7', '<'))) else 'yes' }}"
 
 - name: Create required directories
   file:
