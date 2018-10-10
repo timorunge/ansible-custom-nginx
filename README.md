@@ -1,29 +1,14 @@
-custom_nginx
-============
+# custom_nginx
 
 This role is building and installing nginx directly out of the source code.
 
 It's providing an easy way to patch the nginx sources according to your needs.
 
-Tested platforms are:
-* Debian
-  * 8.10 (Jessie)
-  * 9.4 (Stretch)
-  * 10 (Buster)
-* EL
-  * 7
-* Ubuntu
-  * 16.04 (Xenial Xerus)
-  * 17.10 (Artful Aardvark)
-  * 18.04 (Bionic Beaver)
-  * 18.10 (Cosmic Cuttlefish)
-
 The role is not made for the configuration of the nginx service itself. There
 are already powerful roles out there. If you're looking for one I'd highly
 recommend [jdauphant.nginx](https://github.com/jdauphant/ansible-role-nginx).
 
-Requirements
-------------
+## Requirements
 
 This role requires
 [Ansible 2.6.0](https://docs.ansible.com/ansible/devel/roadmap/ROADMAP_2_6.html)
@@ -37,15 +22,13 @@ pip install ansible==2.7.0
 
 All platform requirements are listed in the metadata file.
 
-Install
--------
+## Install
 
 ```sh
 ansible-galaxy install timorunge.custom_nginx
 ```
 
-Role Variables
---------------
+## Role Variables
 
 The variables that can be passed to this role. You can find a brief description
 in this paragraph. For all variables, take a look at
@@ -127,8 +110,7 @@ custom_nginx_build_options:
   - "--with-stream_ssl_preread_module"
 ```
 
-Examples
---------
+## Examples
 
 To keep the document lean the compile options are stripped.
 You can find the nginx build options either in [this
@@ -309,8 +291,7 @@ a powerful role out there. Take a look at
     - nickhammond.logrotate
 ```
 
-nginx build options
--------------------
+## nginx build options
 
 An overview of the build options for nginx (1.15.3).
 
@@ -489,8 +470,7 @@ An overview of the build options for nginx (1.15.3).
   --with-debug                       enable debug logging
 ```
 
-Testing
--------
+## Testing
 
 [![Build Status](https://travis-ci.org/timorunge/ansible-custom-nginx.svg?branch=master)](https://travis-ci.org/timorunge/ansible-custom-nginx)
 
@@ -498,14 +478,14 @@ Tests are done with [Docker](https://www.docker.com) and
 [docker_test_runner](https://github.com/timorunge/docker-test-runner) which
 brings up the following containers:
 
-* CentOS 7
-* Debian 8.10 (Jessie)
-* Debian 9.4 (Stretch)
-* Debian 10 (Buster)
-* Ubuntu 16.04 (Xenial Xerus)
-* Ubuntu 17.10 (Artful Aardvark)
-* Ubuntu 18.04 (Bionic Beaver)
-* Ubuntu 18.10 (Cosmic Cuttlefish)
+- CentOS 7
+- Debian 8.10 (Jessie)
+- Debian 9.4 (Stretch)
+- Debian 10 (Buster)
+- Ubuntu 16.04 (Xenial Xerus)
+- Ubuntu 17.10 (Artful Aardvark)
+- Ubuntu 18.04 (Bionic Beaver)
+- Ubuntu 18.10 (Cosmic Cuttlefish)
 
 Ansible 2.7.0 is installed on all containers and a
 [test playbook](tests/test.yml) is getting applied.
@@ -523,21 +503,19 @@ curl https://raw.githubusercontent.com/timorunge/docker-test-runner/master/insta
 Since the build time on Travis is limited for public repositories the
 [automated tests](tests/docker_test_runner.travis.yml) are limited to:
 
-* CentOS 7
-* Debian 9.4 (Stretch)
-* Ubuntu 16.04 (Xenial Xerus)
-* Ubuntu 18.04 (Bionic Beaver)
+- CentOS 7
+- Debian 9.4 (Stretch)
+- Ubuntu 16.04 (Xenial Xerus)
+- Ubuntu 18.04 (Bionic Beaver)
 
-Dependencies
-------------
+## Dependencies
 
 None
 
-License
--------
+## License
+
 BSD
 
-Author Information
-------------------
+## Author Information
 
 - Timo Runge
