@@ -10,3 +10,5 @@
       (custom_nginx_patches.changed) or
       (custom_nginx_source_files.changed) or
       (custom_nginx_force_build)
+  tags:
+    - skip_ansible_lint

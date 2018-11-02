@@ -15,3 +15,5 @@
       - "--overwrite"
   register: custom_nginx_source_files
   when: custom_nginx_source_download.changed
+  tags:
+    - skip_ansible_lint

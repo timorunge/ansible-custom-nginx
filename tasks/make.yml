@@ -5,6 +5,8 @@
     chdir: "{{ custom_nginx_install_dir }}/build/nginx-{{ custom_nginx_version }}"
   register: custom_nginx_compile
   when: custom_nginx_build.changed
+  tags:
+    - skip_ansible_lint
 
 - name: Install custom nginx
   make:
@@ -14,3 +16,5 @@
     - systemctl daemon-reload
     - restart nginx
   when: custom_nginx_compile.changed
+  tags:
+    - skip_ansible_lint

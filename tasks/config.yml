@@ -4,6 +4,8 @@
   command: "rsync -togq --ignore-existing --exclude=*.default {{ custom_nginx_install_dir }}/build/nginx-{{ custom_nginx_version }}/conf/ {{ custom_nginx_prefix_directory }}"
   register: custom_nginx_copy_basic_config
   changed_when: custom_nginx_copy_basic_config.rc != 0
+  tags:
+    - skip_ansible_lint
 
 - name: Create nginx systemd configuration
   template:
