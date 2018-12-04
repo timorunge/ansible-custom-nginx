@@ -9,11 +9,9 @@ if [ ! -f /etc/ansible/lint.zip ]; then
   unzip /etc/ansible/lint.zip -d /etc/ansible/lint
 fi
 
-ansible-lint -c /etc/ansible/roles/${ansible_role}/.ansible-lint -r \
-  /etc/ansible/lint/galaxy-lint-rules-master/rules \
+ansible-lint -c /etc/ansible/roles/${ansible_role}/.ansible-lint \
   /etc/ansible/roles/${ansible_role}
-ansible-lint -c /etc/ansible/roles/${ansible_role}/.ansible-lint -r \
-  /etc/ansible/lint/galaxy-lint-rules-master/rules \
+ansible-lint -c /etc/ansible/roles/${ansible_role}/.ansible-lint \
   /ansible/test.yml
 
 ansible-playbook /ansible/test.yml \
