@@ -1,7 +1,7 @@
 ---
 
 - hosts: localhost
-  gather_facts: True
+  gather_facts: true
   vars:
     custom_nginx_version: 1.15.3
     custom_nginx_conf_path: /etc/nginx/nginx.conf

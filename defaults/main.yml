@@ -74,7 +74,7 @@ custom_nginx_patches: {}
 
 # Force a build
 # Type: Bool
-custom_nginx_force_build: False
+custom_nginx_force_build: false
 
 # Type: List
 custom_nginx_build_options:
