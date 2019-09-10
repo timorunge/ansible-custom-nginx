@@ -483,7 +483,6 @@ brings up the following containers:
 - Debian 9.4 (Stretch)
 - Debian 10 (Buster)
 - Ubuntu 16.04 (Xenial Xerus)
-- Ubuntu 17.10 (Artful Aardvark)
 - Ubuntu 18.04 (Bionic Beaver)
 - Ubuntu 18.10 (Cosmic Cuttlefish)
 
@@ -514,7 +513,7 @@ None
 
 ## License
 
-[BSD 3-Clause "New" or "Revised" License](https://spdx.org/licenses/BSD-3-Clause.html)
+[BSD 3-Clause "New" or "Revised" License](LICENSE)
 
 ## Author Information
 

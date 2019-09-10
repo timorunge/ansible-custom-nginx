@@ -19,14 +19,18 @@ docker_images:
   - Debian_8_10
   - Debian_9_4
   - Ubuntu_16_04
-  - Ubuntu_17_10
   - Ubuntu_18_04
   - Ubuntu_18_10
 
 docker_container_environments:
   "1_5_2":
+    playbook: test.yml
     custom_nginx_version: "1.15.2"
   "1_5_3":
+    playbook: test.yml
+    custom_nginx_version: "1.15.3"
+  "1_5_3_no_patches":
+    playbook: test_no_patches.yml
     custom_nginx_version: "1.15.3"
 
 docker_container_volumes:

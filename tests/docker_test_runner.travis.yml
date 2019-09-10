@@ -22,8 +22,13 @@ docker_images:
 
 docker_container_environments:
   "1_5_2":
+    playbook: test.yml
     custom_nginx_version: "1.15.2"
   "1_5_3":
+    playbook: test.yml
+    custom_nginx_version: "1.15.3"
+  "1_5_3_no_patches":
+    playbook: test_no_patches.yml
     custom_nginx_version: "1.15.3"
 
 docker_container_volumes:

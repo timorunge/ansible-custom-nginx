@@ -6,21 +6,21 @@ printf "[defaults]\nroles_path=/etc/ansible/roles\n" > /ansible/ansible.cfg
 ansible-lint -c /etc/ansible/roles/${ansible_role}/.ansible-lint \
   /etc/ansible/roles/${ansible_role}
 ansible-lint -c /etc/ansible/roles/${ansible_role}/.ansible-lint \
-  /ansible/test.yml
+  /ansible/${playbook}
 
-ansible-playbook /ansible/test.yml \
+ansible-playbook /ansible/${playbook} \
   -i /ansible/inventory \
   --syntax-check \
   -e "{ custom_nginx_version: ${custom_nginx_version} }"
 
-ansible-playbook /ansible/test.yml \
+ansible-playbook /ansible/${playbook} \
   -i /ansible/inventory \
   --connection=local \
   --become \
   -e "{ custom_nginx_version: ${custom_nginx_version} }" \
   $(test -z ${travis} && echo "-vvvv")
 
-ansible-playbook /ansible/test.yml \
+ansible-playbook /ansible/${playbook} \
   -i /ansible/inventory \
   --connection=local \
   --become \
