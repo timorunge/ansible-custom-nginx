@@ -1,4 +1,1 @@
 .idea
-docker_test_runner.py
-tests/ansible.cfg
-tests/test.retry

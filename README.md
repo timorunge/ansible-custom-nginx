@@ -1,3 +1,7 @@
+> **Status: Archived.**
+>
+> This repository is no longer maintained and is kept for reference only.
+
 # custom_nginx
 
 This role is building and installing nginx directly out of the source code.
@@ -470,43 +474,6 @@ An overview of the build options for nginx (1.15.3).
   --with-debug                       enable debug logging
 ```
 
-## Testing
-
-[![Build Status](https://travis-ci.org/timorunge/ansible-custom-nginx.svg?branch=master)](https://travis-ci.org/timorunge/ansible-custom-nginx)
-
-Tests are done with [Docker](https://www.docker.com) and
-[docker_test_runner](https://github.com/timorunge/docker-test-runner) which
-brings up the following containers:
-
-- CentOS 7
-- Debian 8.10 (Jessie)
-- Debian 9.4 (Stretch)
-- Debian 10 (Buster)
-- Ubuntu 16.04 (Xenial Xerus)
-- Ubuntu 18.04 (Bionic Beaver)
-- Ubuntu 18.10 (Cosmic Cuttlefish)
-
-Ansible 2.7.7 is installed on all containers and a
-[test playbook](tests/test.yml) is getting applied.
-
-For further details and additional checks take a look at the
-[docker_test_runner configuration](tests/docker_test_runner.yml) and the
-[Docker entrypoint](tests/docker/docker-entrypoint.sh).
-
-```sh
-# Testing locally:
-curl https://raw.githubusercontent.com/timorunge/docker-test-runner/master/install.sh | sh
-./docker_test_runner.py -f tests/docker_test_runner.yml
-```
-
-Since the build time on Travis is limited for public repositories the
-[automated tests](tests/docker_test_runner.travis.yml) are limited to:
-
-- CentOS 7
-- Debian 9.4 (Stretch)
-- Ubuntu 16.04 (Xenial Xerus)
-- Ubuntu 18.04 (Bionic Beaver)
-
 ## Dependencies
 
 None
@@ -514,7 +481,3 @@ None
 ## License
 
 [BSD 3-Clause "New" or "Revised" License](LICENSE)
-
-## Author Information
-
-- Timo Runge
